@@ -1,24 +1,33 @@
 import { CursorEvent } from '@/lib/types';
 
-// REPLACE: Replace all sample events, locations, and Luma URLs with real community events.
+// TODO: Replace dates, venues, and Luma URLs with real Cursor South Africa events.
 export const events: CursorEvent[] = [
 	{
-		id: 'cafe-cursor-example-1',
-		title: 'Cafe Cursor YourCity',
-		date: '2026-03-21',
-		displayDate: 'March 21, 2026',
-		location: 'Your City, Your Country',
-		lumaUrl: 'https://lu.ma/example-event-1',
+		id: 'cafe-cursor-johannesburg',
+		title: 'Cafe Cursor Johannesburg',
+		date: '2026-07-26',
+		displayDate: 'July 26, 2026',
+		location: 'Johannesburg, South Africa',
+		lumaUrl: 'https://lu.ma/cursor-south-africa',
 		status: 'upcoming',
 	},
 	{
-		id: 'cursor-seminar-yourcity',
-		title: 'Cursor Seminar YourCity',
-		date: '2026-02-14',
-		displayDate: 'February 14, 2026',
-		attendees: 38,
-		location: 'Your City, Your Country',
-		recapPath: '/recaps/example-event',
+		id: 'cafe-cursor-cape-town',
+		title: 'Cafe Cursor Cape Town',
+		date: '2026-08-30',
+		displayDate: 'August 30, 2026',
+		location: 'Cape Town, South Africa',
+		lumaUrl: 'https://lu.ma/cursor-south-africa',
+		status: 'upcoming',
+	},
+	{
+		id: 'cursor-meetup-johannesburg-may',
+		title: 'Cursor Meetup Johannesburg',
+		date: '2026-05-17',
+		displayDate: 'May 17, 2026',
+		attendees: 42,
+		location: 'Johannesburg, South Africa',
+		recapPath: '/recaps/cafe-cursor-johannesburg',
 		thumbnail: '/images/events/cursor-event-01.jpg',
 		galleryImages: ['/images/events/cursor-event-02.jpg', '/images/events/cursor-event-04.jpg'],
 		status: 'past',

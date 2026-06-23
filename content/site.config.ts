@@ -1,15 +1,15 @@
-// REPLACE: Update these values for your local Cursor community.
-// REPLACE: Keep links and names community-specific.
+// Cursor South Africa community configuration.
+// TODO: Replace lumaUrl with the real Cursor South Africa Luma calendar URL.
 export const siteConfig = {
-	communityName: 'Cursor Community',
-	communityNameLocal: 'YourCity',
-	city: 'Your City',
-	country: 'Your Country',
-	lumaUrl: 'https://lu.ma/cursor-community',
+	communityName: 'South Africa',
+	communityNameLocal: 'Mzansi',
+	city: 'Johannesburg',
+	country: 'South Africa',
+	lumaUrl: 'https://lu.ma/cursor-south-africa',
 	cursorCommunityUrl: 'https://cursor.com/community',
 	defaultLocale: 'en',
 	locales: ['en'],
-	footerTagline: 'Made with Cursor by ambassadors worldwide',
+	footerTagline: 'Built in South Africa with Cursor',
 };
 
 export type SiteConfig = typeof siteConfig;

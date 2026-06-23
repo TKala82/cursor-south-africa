@@ -1,9 +1,10 @@
 import { FeaturedResource } from '@/lib/types';
 
-// REPLACE: Customize the featured card text and destination for your community.
+// TODO: Point this at your latest workshop slides, guide, or signup link.
 export const featuredResource: FeaturedResource = {
-	title: 'Seminar Slides for the Event',
-	description: 'A practical, hands-on workshop series for builders who want to learn Cursor with real workflows.',
+	title: 'Getting Started with Cursor',
+	description:
+		'A practical, hands-on workshop for South African builders who want to learn Cursor with real workflows — from your first prompt to shipping production code.',
 	href: '/slides/1',
 	ctaLabel: 'View Slides',
 };

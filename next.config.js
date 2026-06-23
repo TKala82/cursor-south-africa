@@ -18,6 +18,11 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+	// Pin the workspace root to this project so Next does not infer a parent
+	// directory as the root when stray lockfiles exist higher up the tree.
+	turbopack: {
+		root: __dirname,
+	},
 	async headers() {
 		return [
 			{

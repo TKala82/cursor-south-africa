@@ -1,6 +1,8 @@
 import { Partner } from '@/lib/types';
 
-// REPLACE: Update partner names, logos, and links for your local hosts/sponsors.
+// TODO: These are placeholder venues. Replace with real Cursor South Africa
+// hosting partners / sponsors. Each logo lives in public/images/partners/ and has
+// its name baked into the SVG, so add a new SVG when you change a partner's name.
 export const partners: Partner[] = [
 	{
 		name: 'Riverside Craft Cafe',

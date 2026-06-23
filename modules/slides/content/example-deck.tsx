@@ -29,10 +29,10 @@ export const exampleDeck: Slide[] = [
 			<CodeBlock
 				code={`export const events = [
   {
-    id: 'event-1',
-    title: 'Cafe Cursor YourCity',
-    date: '2026-03-21',
-    location: 'Your City, Your Country',
+    id: 'cafe-cursor-johannesburg',
+    title: 'Cafe Cursor Johannesburg',
+    date: '2026-07-26',
+    location: 'Johannesburg, South Africa',
     status: 'upcoming',
   },
 ]`}

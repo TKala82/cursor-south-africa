@@ -1,32 +1,25 @@
 import { Ambassador } from '@/lib/types';
 
-// REPLACE: Swap names, roles, photos, and links with your ambassador team.
+// TODO: Replace the placeholder names, roles, photos, and links below with the
+// real Cursor South Africa ambassador team. Drop new headshots into
+// public/images/ambassadors/ and point `photo` at them.
 export const ambassadors: Ambassador[] = [
 	{
-		name: 'Ambassador One',
-		role: 'Community Lead',
+		name: 'Your Name',
+		role: 'Cursor Ambassador, Johannesburg',
 		photo: '/images/ambassadors/amb1.png',
 		links: {
 			x: 'https://x.com/',
 			linkedin: 'https://linkedin.com/',
-			website: 'https://example.com/',
+			github: 'https://github.com/TKala82',
 		},
 	},
 	{
-		name: 'Ambassador Two',
-		role: 'Co-organizer',
+		name: 'Co-organizer Name',
+		role: 'Community Co-organizer, Cape Town',
 		photo: '/images/ambassadors/amb2.png',
 		links: {
-			github: 'https://github.com/',
 			linkedin: 'https://linkedin.com/',
-		},
-	},
-	{
-		name: 'Ambassador Three',
-		role: 'Event Operations',
-		photo: '/images/ambassadors/amb3.png',
-		links: {
-			x: 'https://x.com/',
 			website: 'https://example.com/',
 		},
 	},

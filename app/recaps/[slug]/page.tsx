@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: RecapPageProps): Promise<Meta
 	const description = recap.summary[0] || `Recap of ${recap.title}`;
 
 	return {
-		title: `${recap.title} | ${siteConfig.communityName}`,
+		title: recap.title,
 		description,
 		openGraph: {
 			title: recap.title,
@@ -40,7 +40,7 @@ function buildRecapJsonLd(slug: string) {
 		description: recap.summary[0] || '',
 		organizer: {
 			'@type': 'Organization',
-			name: siteConfig.communityName,
+			name: `Cursor ${siteConfig.communityName}`,
 		},
 		...(recap.attendees ? { maximumAttendeeCapacity: recap.attendees } : {}),
 		...(recap.host

@@ -57,10 +57,11 @@
 	--color-cursor-border-emphasis: rgba(237, 236, 236, 0.15);
 	--color-cursor-overlay: rgba(237, 236, 236, 0.05);
 	--color-cursor-accent-blue: #a8b4c8;
-	--color-cursor-accent-green: #a8c4a0;
+	/* South Africa-leaning accents: soft emerald green and gold */
+	--color-cursor-accent-green: #84c69c;
 	--color-cursor-accent-red: #c4a0a0;
 	--color-cursor-accent-purple: #b8a8c8;
-	--color-cursor-accent-yellow: #c8bfa0;
+	--color-cursor-accent-yellow: #d4c074;
 	--color-cursor-accent-orange: #c8b4a0;
 	--color-cursor-accent-blue-bg: rgba(26, 29, 46, 0.3);
 	--color-cursor-accent-green-bg: rgba(26, 36, 24, 0.3);

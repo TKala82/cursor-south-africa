@@ -5,25 +5,63 @@ import { I18nProvider } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
 import './globals.css';
 
+// TODO: Set NEXT_PUBLIC_SITE_URL (e.g. in Vercel) to your production domain so
+// canonical URLs and social preview images resolve correctly.
+const SITE_URL =
+	process.env.NEXT_PUBLIC_SITE_URL ||
+	(process.env.VERCEL_PROJECT_PRODUCTION_URL
+		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+		: 'https://example.com');
+
+const SITE_NAME = `Cursor ${siteConfig.communityName}`;
+const SITE_DESCRIPTION =
+	'Cursor South Africa is the local community for builders using Cursor. Join our meetups, workshops, and Cafe Cursor events in Johannesburg, Cape Town, and beyond.';
+
 export const metadata: Metadata = {
-	title: `${siteConfig.communityName} | Cursor Ambassador Site`,
-	description: 'Reusable Cursor Ambassador website template for local communities.',
+	metadataBase: new URL(SITE_URL),
+	title: {
+		default: SITE_NAME,
+		template: `%s | ${SITE_NAME}`,
+	},
+	description: SITE_DESCRIPTION,
+	keywords: ['Cursor', 'South Africa', 'Cursor South Africa', 'AI coding', 'developer community', 'Johannesburg', 'Cape Town', 'meetup'],
+	alternates: {
+		canonical: '/',
+	},
 	openGraph: {
-		title: siteConfig.communityName,
-		description: 'Reusable Cursor Ambassador website template for local communities.',
+		title: SITE_NAME,
+		description: SITE_DESCRIPTION,
+		url: SITE_URL,
+		siteName: SITE_NAME,
+		locale: 'en_ZA',
 		type: 'website',
+		images: [
+			{
+				url: '/images/readme-banner.png',
+				width: 1200,
+				height: 630,
+				alt: SITE_NAME,
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: SITE_NAME,
+		description: SITE_DESCRIPTION,
+		images: ['/images/readme-banner.png'],
 	},
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-	const headersList = await headers();
-	const nonce = headersList.get('x-nonce') ?? '';
+	// Reading headers() opts this layout into dynamic rendering so the per-request
+	// CSP nonce set by middleware is applied to Next.js scripts.
+	await headers();
 
 	return (
-		<html lang={siteConfig.defaultLocale}>
+		<html lang="en-ZA">
 			<body className="antialiased">
 				<I18nProvider>{children}</I18nProvider>
-				<Analytics nonce={nonce} />
+				<Analytics />
 			</body>
 		</html>
 	);

@@ -17,7 +17,7 @@ import { upcomingEvents } from '@/content/events';
 function buildHomeJsonLd() {
 	const org = {
 		'@type': 'Organization',
-		name: siteConfig.communityName,
+		name: `Cursor ${siteConfig.communityName}`,
 		url: siteConfig.cursorCommunityUrl,
 	};
 

@@ -14,12 +14,11 @@ export const ambassadors: Ambassador[] = [
 		},
 	},
 	{
-		name: 'Co-organizer Name',
+		name: 'Jonas',
 		role: 'Community Co-organizer, Cape Town',
-		photo: '/images/ambassadors/amb2.png',
+		photo: '/images/ambassadors/jonas.png',
 		links: {
-			linkedin: 'https://linkedin.com/',
-			website: 'https://example.com/',
+			linkedin: 'https://www.linkedin.com/in/jonas-kgomo/',
 		},
 	},
 ];

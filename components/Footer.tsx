@@ -2,16 +2,22 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
-import { upcomingEvents } from '@/content/events';
-import Partners from '@/components/Partners';
+
+const QUICK_LINKS = [
+	{ href: 'https://cursor.com/learn', labelKey: 'footer.learn', external: true },
+	{ href: 'https://cursor.com/docs', labelKey: 'footer.docs', external: true },
+	{ href: siteConfig.lumaUrl, labelKey: 'footer.allEventsOnLuma', external: true },
+	{ href: siteConfig.cursorCommunityUrl, labelKey: 'footer.community', external: true },
+	{ href: 'https://x.com/cursor_ai', labelKey: 'footer.followUsOnX', external: true },
+] as const;
+
+const QUICK_LINK_CLASS =
+	'w-fit text-sm leading-relaxed text-cursor-text-secondary transition-colors hover:text-cursor-text';
 
 const Footer: React.FC = () => {
 	const { t } = useI18n();
-	const nextEvent = upcomingEvents[0];
 
 	return (
 		<motion.footer
@@ -19,80 +25,48 @@ const Footer: React.FC = () => {
 			whileInView={{ opacity: 1 }}
 			viewport={{ once: true, margin: '-50px' }}
 			transition={{ duration: 0.5 }}
-			className="mt-24 pt-8 border-t border-cursor-border"
+			className="relative z-20 -mt-[22vw] w-full bg-gradient-to-b from-transparent from-20% via-footer-blend-mid via-70% to-footer-blend-bottom pt-[11vw] md:-mt-[20vw] md:pt-[7rem]"
 		>
-			<Partners />
-
-			<div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-start">
-				{/* Branding */}
-				<div>
-					<div className="flex items-center gap-2 mb-2">
-						<Image
-							src="/cursor-logo.svg"
-							alt="Cursor"
-							width={90}
-							height={24}
-							className="h-5 w-auto"
-						/>
-						<span className="text-cursor-text-muted text-sm">
-							{siteConfig.communityNameLocal}
-						</span>
+			<div className="relative mx-auto max-w-[604px] px-6 pb-10 md:px-0 md:pb-12">
+				<div className="grid grid-cols-1 gap-12 md:grid-cols-[20rem_8rem] md:gap-20">
+					<div className="flex h-full flex-col">
+						<p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white">
+							{t('footer.communityLabel')}
+						</p>
+						<h2 className="mt-auto text-[2.5rem] font-bold lowercase leading-[1.05] text-[#f54e00] md:text-[2.75rem]">
+							<span className="block">{t('footer.headingLine1')}</span>
+							<span className="block">{t('footer.headingLine2')}</span>
+							<span className="block">{t('footer.headingLine3')}</span>
+						</h2>
 					</div>
-					<p className="text-cursor-text-muted text-sm leading-relaxed">
-						{siteConfig.footerTagline || t('footer.madeWith')}
+
+					<div className="flex h-full flex-col">
+						<p className="mb-6 text-[11px] font-medium uppercase tracking-[0.22em] text-white">
+							{t('footer.quickLinks')}
+						</p>
+						<nav className="mt-auto flex flex-col gap-4">
+							{QUICK_LINKS.map((link) => (
+								<a
+									key={link.labelKey}
+									href={link.href}
+									{...(link.external
+										? { target: '_blank', rel: 'noopener noreferrer' }
+										: {})}
+									className={QUICK_LINK_CLASS}
+								>
+									{t(link.labelKey)}
+								</a>
+							))}
+						</nav>
+					</div>
+				</div>
+
+				<div className="mt-16 border-t border-white/[0.08] pt-6 md:mt-20">
+					<p className="text-right text-xs normal-case tracking-normal text-white/35">
+						{t('footer.copyright')}
 					</p>
 				</div>
-
-				{/* Community links */}
-				<div className="flex flex-col gap-2.5">
-					<a
-						href={siteConfig.lumaUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
-					>
-						{t('footer.allEvents')}
-						<ExternalLink className="w-3 h-3" />
-					</a>
-					<a
-						href={siteConfig.cursorCommunityUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
-					>
-						{t('footer.community')}
-						<ExternalLink className="w-3 h-3" />
-					</a>
-					<a
-						href="https://x.com/cursor_ai"
-						target="_blank"
-						rel="noopener noreferrer"
-						className="text-sm text-cursor-text-secondary hover:text-cursor-text transition-colors inline-flex items-center gap-1.5"
-					>
-						{t('footer.followUs')}
-						<ExternalLink className="w-3 h-3" />
-					</a>
-				</div>
-
-				{/* CTA */}
-				<div className="md:text-right">
-					{nextEvent?.lumaUrl && (
-						<a
-							href={nextEvent.lumaUrl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#f54e00] text-white rounded-md hover:bg-[#e04500] transition-colors text-sm font-medium"
-						>
-							{t('footer.joinNext')}
-							<ExternalLink className="w-3.5 h-3.5" />
-						</a>
-					)}
-				</div>
 			</div>
-
-			<p className="text-cursor-text-faint text-xs text-center mt-10 pb-6">
-				{siteConfig.footerTagline || t('footer.madeWith')}
-			</p>
 		</motion.footer>
 	);
 };

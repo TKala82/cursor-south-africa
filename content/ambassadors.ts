@@ -5,13 +5,12 @@ import { Ambassador } from '@/lib/types';
 // public/images/ambassadors/ and point `photo` at them.
 export const ambassadors: Ambassador[] = [
 	{
-		name: 'Your Name',
+		name: 'Shabs',
 		role: 'Cursor Ambassador, Johannesburg',
-		photo: '/images/ambassadors/amb1.png',
+		photo: '/images/ambassadors/shabs.png',
 		links: {
-			x: 'https://x.com/',
-			linkedin: 'https://linkedin.com/',
-			github: 'https://github.com/TKala82',
+			x: 'https://x.com/shabskalambaie',
+			linkedin: 'https://www.linkedin.com/in/tshibangu-kalambaie/',
 		},
 	},
 	{

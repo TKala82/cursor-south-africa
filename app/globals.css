@@ -49,6 +49,10 @@
 	--color-cursor-bg-dark: #0f0d06;
 	--color-cursor-surface: #1c1a12;
 	--color-cursor-surface-raised: #262318;
+	/* Skyline-to-footer blend tones, sampled from the Johannesburg banner backdrop */
+	--color-footer-blend-top: #11100e;
+	--color-footer-blend-mid: #0d0c09;
+	--color-footer-blend-bottom: #0a0803;
 	--color-cursor-text: #edecec;
 	--color-cursor-text-secondary: rgba(237, 236, 236, 0.75);
 	--color-cursor-text-muted: rgba(237, 236, 236, 0.55);

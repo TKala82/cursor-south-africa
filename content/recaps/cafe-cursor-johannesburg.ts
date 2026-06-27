@@ -1,71 +1,18 @@
 import { RecapData } from '@/lib/types';
+import { johannesburgJune2026Photos } from '@/content/event-photos';
 
-// TODO: Replace with the real recap once the event has happened.
-// All subsections (speakers, projects, highlights, resources) are optional —
-// include only the ones relevant to your event.
 export const cafeCursorJohannesburgRecap: RecapData = {
 	slug: 'cafe-cursor-johannesburg',
-	title: 'Cursor Meetup Johannesburg - Recap',
-	date: 'May 17, 2026',
-	attendees: 42,
+	title: 'Cafe Cursor Johannesburg — Recap',
+	date: 'June 5, 2026 · Mamakashaka & Friends, Braamfontein',
 	summary: [
-		'Builders from across Gauteng gathered for a hands-on day of AI-assisted development with Cursor.',
-		'Attendees paired on real projects, shared local workflows, and swapped tips that the Cursor South Africa community can build on.',
+		'Our first Cafe Cursor in Johannesburg brought builders together at Mamakashaka & Friends in Braamfontein for an afternoon of hands-on coding with Cursor.',
+		'A look back at the people, the projects, and the energy from the day.',
 	],
 	host: {
-		name: 'Host Venue',
-		logo: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=200&auto=format&fit=crop',
-		url: 'https://example.com/venue',
+		name: 'Mamakashaka & Friends',
+		logo: 'https://images.unsplash.com/photo-1554118811-1e0d582d9c57?q=80&w=200&auto=format&fit=crop',
+		url: 'https://www.google.com/maps/place/Mamakashaka+%26+Friends/@-26.1942986,28.0321808,17z/data=!3m1!4b1!4m6!3m5!1s0x1e950df245085d63:0xb9de9ab406de3cf6!8m2!3d-26.1942986!4d28.0347557!16s%2Fg%2F11w43c0sz1?entry=ttu',
 	},
-
-	// Speakers — who presented at the event and what they talked about
-	speakers: [
-		{
-			name: 'Speaker Name',
-			topic: 'Shipping full-stack apps with Cursor',
-		},
-		{
-			name: 'Speaker Name',
-			topic: 'From idea to deployed: a live coding session',
-		},
-	],
-
-	// Projects — what attendees built or showcased
-	projects: [
-		{
-			name: 'Project Name',
-			description: 'A short description of something an attendee built with Cursor during the meetup.',
-			author: 'Builder Name',
-		},
-	],
-
-	// Highlights — memorable quotes, feedback, or stories from attendees
-	highlights: [
-		{
-			quote: 'I shipped more in this one afternoon than in my last sprint.',
-			author: 'An attendee',
-		},
-		{
-			quote: 'Great to meet other South African builders using Cursor in the real world.',
-		},
-	],
-
-	// Resources — slides, repos, or links shared during the event
-	resources: [{ label: 'Workshop slides', url: '/slides/1' }],
-
-	photoCredits: [{ name: 'Community Volunteer' }],
-	photos: [
-		{
-			src: '/images/events/cursor-event-02.jpg',
-			alt: 'Community members coding together in Johannesburg',
-		},
-		{
-			src: '/images/events/cursor-event-04.jpg',
-			alt: 'Attendees during the Cursor Johannesburg meetup',
-		},
-		{
-			src: '/images/events/cursor-event-06.jpg',
-			alt: 'Organizer speaking to participants',
-		},
-	],
+	photos: johannesburgJune2026Photos,
 };

@@ -64,14 +64,14 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 bg-cursor-bg transition-all duration-300 ${
           scrolled
-            ? 'bg-cursor-bg/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-cursor-border'
-            : 'bg-cursor-bg/80 backdrop-blur-md border-b border-transparent'
+            ? 'shadow-[0_1px_8px_rgba(0,0,0,0.25)] border-b border-cursor-border'
+            : 'border-b border-cursor-border'
         }`}
       >
         <div className="flex justify-between items-center px-6 md:px-12 lg:px-16 h-14">
-          <a href="#" className="flex items-center gap-3">
+          <a href="#" className="flex items-center gap-2.5">
             <Image
               src="/cursor-logo.svg"
               alt="Cursor"
@@ -80,13 +80,8 @@ export default function Navbar() {
               priority
               className="h-6 md:h-8 w-auto"
             />
-            <span className="font-cursor text-lg md:text-xl font-semibold tracking-tight text-cursor-text">
-              {siteConfig.communityName}
-              {siteConfig.communityNameLocal ? (
-                <span className="font-thai font-bold tracking-wide text-xl md:text-2xl text-cursor-text-secondary ml-2">
-                  {siteConfig.communityNameLocal}
-                </span>
-              ) : null}
+            <span className="text-xs uppercase tracking-wider text-cursor-text-muted font-medium">
+              | {siteConfig.country}
             </span>
           </a>
 
@@ -109,12 +104,12 @@ export default function Navbar() {
               )
             })}
             <a
-              href={siteConfig.lumaUrl}
+              href={siteConfig.cursorCommunityUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium px-3.5 py-1.5 rounded-md bg-[#f54e00] text-white hover:bg-[#e04500] transition-colors"
+              className="text-sm font-medium px-3.5 py-1.5 rounded-md bg-cursor-text text-cursor-bg hover:bg-cursor-text-secondary transition-colors"
             >
-              {t('nav.joinUs')}
+              {t('nav.joinCommunity')}
             </a>
             <LanguageToggle />
           </div>
@@ -132,8 +127,10 @@ export default function Navbar() {
         </div>
       </nav>
 
+      <div className="h-14 shrink-0" aria-hidden="true" />
+
       {mobileOpen && (
-        <div className="fixed inset-0 top-14 z-30 bg-cursor-bg/95 backdrop-blur-md sm:hidden">
+        <div className="fixed inset-0 top-14 z-40 bg-cursor-bg sm:hidden">
           <div className="flex flex-col items-center gap-6 pt-12">
             {NAV_LINKS.map(({ href, key }) => (
               <a
@@ -146,13 +143,13 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={siteConfig.lumaUrl}
+              href={siteConfig.cursorCommunityUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMobile}
-              className="text-base font-medium px-5 py-2.5 rounded-md bg-[#f54e00] text-white hover:bg-[#e04500] transition-colors"
+              className="text-base font-medium px-5 py-2.5 rounded-md bg-cursor-text text-cursor-bg hover:bg-cursor-text-secondary transition-colors"
             >
-              {t('nav.joinUs')}
+              {t('nav.joinCommunity')}
             </a>
           </div>
         </div>

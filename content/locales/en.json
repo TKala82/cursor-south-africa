@@ -1,6 +1,6 @@
 {
 	"nav": {
-		"joinUs": "Join us"
+		"joinCommunity": "Join the Community"
 	},
 	"home": {
 		"featured": "Featured",
@@ -12,6 +12,7 @@
 		"attendees": "{count} attendees",
 		"hostedBy": "Hosted by",
 		"viewRecap": "View recap",
+		"viewOnLuma": "View on Luma",
 		"viewSlides": "View slides"
 	},
 	"ambassadors": {
@@ -20,11 +21,20 @@
 	},
 	"footer": {
 		"hostingPartners": "Hosting Partners",
+		"communityLabel": "Community",
+		"headingLine1": "let's",
+		"headingLine2": "build",
+		"headingLine3": "together",
+		"quickLinks": "Quick Links",
+		"learn": "Learn",
+		"docs": "Docs",
+		"allEventsOnLuma": "All Events On Luma",
 		"community": "Cursor Community",
-		"allEvents": "All events on Luma",
 		"madeWith": "Made with Cursor by ambassadors worldwide",
 		"joinNext": "Join the next event",
-		"followUs": "Follow Cursor on X"
+		"followUs": "Follow Cursor on X",
+		"followUsOnX": "Follow Us on X",
+		"copyright": "Made with Cursor in South Africa"
 	},
 	"featured": {
 		"defaultDescription": "A practical, hands-on workshop series for builders who want to learn Cursor with real workflows."
@@ -69,5 +79,12 @@
 		"title": "Cafe Cursor around the world",
 		"subtitle": "Same day, different timezones",
 		"description": "Cursor users are building together worldwide. Even with timezone differences, we are one community."
+	},
+	"countdown": {
+		"days": "Days",
+		"hours": "Hours",
+		"minutes": "Minutes",
+		"seconds": "Seconds",
+		"today": "Happening today"
 	}
 }

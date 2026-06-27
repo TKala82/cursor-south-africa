@@ -45,7 +45,7 @@ const AmbassadorSection: React.FC = () => {
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: '-50px' }}
 			transition={{ duration: 0.5 }}
-			className="mb-16"
+			className="mt-20 md:mt-28 mb-16"
 		>
 			<p className="text-xs uppercase tracking-wider text-cursor-text-muted font-medium mb-2">
 				{t('ambassadors.title', { communityName: siteConfig.communityName })}
@@ -54,7 +54,7 @@ const AmbassadorSection: React.FC = () => {
 				{t('ambassadors.heading')}
 			</h2>
 
-			<div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+			<div className="grid sm:grid-cols-2 md:grid-cols-2 gap-4">
 				{ambassadors.map((ambassador, index) => {
 					const links = [
 						{ kind: 'x' as const, href: ambassador.links.x },
@@ -70,7 +70,7 @@ const AmbassadorSection: React.FC = () => {
 							whileInView={{ opacity: 1, y: 0 }}
 							viewport={{ once: true, margin: '-50px' }}
 							transition={{ duration: 0.3, delay: index * 0.07 }}
-							className="bg-cursor-bg-dark border border-cursor-border rounded-md p-5 group hover:border-cursor-accent-purple/30 hover:shadow-[0_0_15px_rgba(184,168,200,0.08)] transition-all duration-300"
+							className="bg-cursor-bg-dark border border-cursor-border rounded-md p-5 group hover:border-[#f54e00]/40 hover:shadow-[0_0_15px_rgba(245,78,0,0.12)] transition-all duration-300"
 						>
 							<div className="flex items-center gap-4">
 								<div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-cursor-border-emphasis">

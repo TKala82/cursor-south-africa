@@ -1,38 +1,51 @@
 import { CursorEvent } from '@/lib/types';
 
-// TODO: Replace dates, venues, and Luma URLs with real Cursor South Africa events.
+const LUMA_URL = 'https://luma.com/cursor-johannesburg-africa';
+
 export const events: CursorEvent[] = [
 	{
 		id: 'cafe-cursor-johannesburg',
 		title: 'Cafe Cursor Johannesburg',
-		date: '2026-07-26',
-		displayDate: 'July 26, 2026',
+		date: '2026-07-23',
+		displayDate: 'July 23, 2026',
 		location: 'Johannesburg, South Africa',
-		lumaUrl: 'https://lu.ma/cursor-south-africa',
+		lumaUrl: LUMA_URL,
 		status: 'upcoming',
 	},
 	{
-		id: 'cafe-cursor-cape-town',
-		title: 'Cafe Cursor Cape Town',
-		date: '2026-08-30',
-		displayDate: 'August 30, 2026',
-		location: 'Cape Town, South Africa',
-		lumaUrl: 'https://lu.ma/cursor-south-africa',
-		status: 'upcoming',
-	},
-	{
-		id: 'cursor-meetup-johannesburg-may',
-		title: 'Cursor Meetup Johannesburg',
-		date: '2026-05-17',
-		displayDate: 'May 17, 2026',
-		attendees: 42,
-		location: 'Johannesburg, South Africa',
+		id: 'cafe-cursor-johannesburg-june',
+		title: 'Cafe Cursor Johannesburg',
+		date: '2026-06-05',
+		displayDate: 'June 5, 2026',
+		location: 'Braamfontein, Johannesburg',
+		venue: 'Mamakashaka & Friends, Braamfontein',
+		mapsUrl:
+			'https://www.google.com/maps/place/Mamakashaka+%26+Friends/@-26.1942986,28.0321808,17z/data=!3m1!4b1!4m6!3m5!1s0x1e950df245085d63:0xb9de9ab406de3cf6!8m2!3d-26.1942986!4d28.0347557!16s%2Fg%2F11w43c0sz1?entry=ttu',
+		lumaUrl: `${LUMA_URL}?period=past`,
 		recapPath: '/recaps/cafe-cursor-johannesburg',
-		thumbnail: '/images/events/cursor-event-01.jpg',
-		galleryImages: ['/images/events/cursor-event-02.jpg', '/images/events/cursor-event-04.jpg'],
 		status: 'past',
 	},
 ];
 
 export const upcomingEvents = events.filter((event) => event.status === 'upcoming');
 export const pastEvents = events.filter((event) => event.status === 'past');
+
+export const DAY_MS = 86_400_000;
+
+// How close (in days) the next event must be before the hero countdown appears.
+// TEMP (preview): widened so the countdown shows now (JHB is ~32 days out). Revert to 10 before shipping.
+export const COUNTDOWN_WINDOW_DAYS = 40;
+
+// Local midnight of the event day, matching how dates are formatted elsewhere on the site.
+export function eventStartMs(event: CursorEvent): number {
+	return new Date(`${event.date}T00:00:00`).getTime();
+}
+
+// Soonest event whose day has not fully passed. Date-driven so a stale `status` can never desync it.
+export function getNextEvent(nowMs: number): CursorEvent | null {
+	return (
+		[...events]
+			.filter((event) => eventStartMs(event) + DAY_MS > nowMs)
+			.sort((a, b) => eventStartMs(a) - eventStartMs(b))[0] ?? null
+	);
+}

@@ -2,12 +2,17 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import IntroSection from '@/components/IntroSection';
+import WhatWeDo from '@/components/WhatWeDo';
+import AudienceHooks from '@/components/AudienceHooks';
 import HeroHeader from '@/components/HeroHeader';
+import EventCountdown from '@/components/EventCountdown';
+import JohannesburgSkyline from '@/components/JohannesburgSkyline';
 import AmbassadorSection from '@/components/AmbassadorSection';
-import FeaturedSection from '@/components/FeaturedSection';
 import UpcomingEvents from '@/components/UpcomingEvents';
 import PastEvents from '@/components/PastEvents';
-import GlobalEvents from '@/components/GlobalEvents';
+import StatementBanner from '@/components/StatementBanner';
+import HostingPartners from '@/components/HostingPartners';
 import SectionDivider from '@/components/SectionDivider';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
@@ -46,18 +51,27 @@ const Home: React.FC = () => {
 		<main className="min-h-screen bg-cursor-bg text-cursor-text scroll-smooth">
 			<JsonLd data={buildHomeJsonLd()} />
 			<Navbar />
-			<HeroHeader />
+			<IntroSection />
+			<HeroHeader>
+				<EventCountdown />
+			</HeroHeader>
 
-			<div className="max-w-5xl mx-auto px-6 py-16 md:py-24">
-				<AmbassadorSection />
+			<div className="max-w-5xl mx-auto px-6 pt-[235px] pb-16 md:pt-[272px] md:pb-24">
+				<WhatWeDo />
 				<SectionDivider />
-				<FeaturedSection />
+				<AudienceHooks />
 				<SectionDivider />
 				<UpcomingEvents />
 				<SectionDivider />
 				<PastEvents />
+				<StatementBanner />
+				<AmbassadorSection />
 				<SectionDivider />
-				<GlobalEvents />
+				<HostingPartners />
+			</div>
+
+			<div className="relative bg-gradient-to-b from-footer-blend-top via-footer-blend-mid to-footer-blend-bottom">
+				<JohannesburgSkyline />
 				<Footer />
 			</div>
 		</main>

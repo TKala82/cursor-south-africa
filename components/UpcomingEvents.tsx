@@ -1,19 +1,33 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { upcomingEvents } from '@/content/events';
+import { upcomingEvents, getNextEvent, eventStartMs } from '@/content/events';
 import { useI18n } from '@/lib/i18n';
 
 const UpcomingEvents: React.FC = () => {
 	const { t, locale } = useI18n();
 
-	if (upcomingEvents.length === 0) {
+	// `now` stays null until mount so SSR and the first client render agree (no hydration mismatch).
+	const [now, setNow] = useState<number | null>(null);
+
+	useEffect(() => {
+		setNow(Date.now());
+	}, []);
+
+	// Date-sorted upcoming list, used as the deterministic SSR / first-paint fallback.
+	const sorted = [...upcomingEvents].sort((a, b) => eventStartMs(a) - eventStartMs(b));
+
+	// Feature the soonest event still ahead. After mount this is the SAME getNextEvent() the hero
+	// countdown uses, so the featured card and the countdown can never point at different events.
+	const featured = (now === null ? sorted[0] : getNextEvent(now)) ?? null;
+
+	if (!featured) {
 		return null;
 	}
 
-	const [featured, ...rest] = upcomingEvents;
+	const rest = sorted.filter((event) => event.id !== featured.id);
 
 	const formatDate = (date: string, style: 'short' | 'long' = 'short') =>
 		new Date(`${date}T00:00:00`).toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
@@ -46,14 +60,14 @@ const UpcomingEvents: React.FC = () => {
 				whileInView={{ opacity: 1, y: 0 }}
 				viewport={{ once: true, margin: '-50px' }}
 				transition={{ duration: 0.4 }}
-				className="relative overflow-hidden bg-cursor-surface border border-cursor-border border-l-2 border-l-cursor-accent-blue rounded-lg p-5 mb-6"
+				className="relative overflow-hidden bg-cursor-surface border border-cursor-border rounded-lg p-5 mb-6"
 			>
 				{/* Glow backdrop */}
 				<div className="pointer-events-none absolute -inset-px rounded-lg bg-[radial-gradient(ellipse_at_bottom_left,rgba(168,180,200,0.06),transparent_60%)]" />
-				<div className="flex items-center gap-2 text-sm text-cursor-text-muted mb-2">
+				<div className="flex items-center gap-2 text-sm text-[#f54e00] font-medium mb-2">
 					<span className="relative flex h-2.5 w-2.5">
-						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cursor-accent-blue opacity-75" />
-						<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cursor-accent-blue" />
+						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f54e00] opacity-75" />
+						<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f54e00]" />
 					</span>
 					<span>{formatDate(featured.date, 'long')}</span>
 					<span className="text-cursor-text-faint">&middot;</span>
@@ -90,7 +104,7 @@ const UpcomingEvents: React.FC = () => {
 								className="py-3 first:pt-0 last:pb-0"
 							>
 								<div className="flex items-start gap-4">
-									<span className="text-sm font-medium text-cursor-text-muted w-28 flex-shrink-0 pt-0.5">
+									<span className="text-sm font-medium text-[#f54e00] w-28 flex-shrink-0 pt-0.5">
 										{shortDate}
 									</span>
 									<div className="flex-1 min-w-0">

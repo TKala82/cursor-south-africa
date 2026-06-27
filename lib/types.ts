@@ -8,6 +8,8 @@ export interface CursorEvent {
 	displayDate: string;
 	attendees?: number;
 	location: string;
+	venue?: string;
+	mapsUrl?: string;
 	lumaUrl?: string;
 	recapPath?: string;
 	thumbnail?: string;
@@ -43,6 +45,19 @@ export interface FeaturedResource {
 	description: string;
 	href: string;
 	ctaLabel: string;
+}
+
+export interface Audience {
+	id: string;
+	title: string;
+	body: string;
+	// Omit -> plain statement card (no hover/pointer). Set -> quiet link.
+	href?: string;
+}
+
+export interface IntroContent {
+	headline: string;
+	subheadline: string;
 }
 
 export interface HeaderPhoto {

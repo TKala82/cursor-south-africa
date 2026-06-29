@@ -6,6 +6,7 @@ export const events: CursorEvent[] = [
 	{
 		id: 'cafe-cursor-johannesburg',
 		title: 'Cafe Cursor Johannesburg',
+		upcomingTitle: 'Cursor Meetup',
 		date: '2026-07-23',
 		displayDate: 'July 23, 2026',
 		location: 'Johannesburg, South Africa',
@@ -48,4 +49,26 @@ export function getNextEvent(nowMs: number): CursorEvent | null {
 			.filter((event) => eventStartMs(event) + DAY_MS > nowMs)
 			.sort((a, b) => eventStartMs(a) - eventStartMs(b))[0] ?? null
 	);
+}
+
+/** Title shown on the hero countdown and featured upcoming card. */
+export function getEventDisplayTitle(event: CursorEvent): string {
+	return event.upcomingTitle ?? event.title;
+}
+
+/** City label derived from `location` (e.g. "Johannesburg, South Africa" → "Johannesburg"). */
+export function getEventCity(event: CursorEvent): string {
+	return event.location.split(',')[0].trim();
+}
+
+export function formatEventDate(
+	date: string,
+	locale = 'en',
+	style: 'short' | 'long' = 'short',
+): string {
+	return new Date(`${date}T00:00:00`).toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
+		year: 'numeric',
+		month: style === 'long' ? 'long' : 'short',
+		day: 'numeric',
+	});
 }

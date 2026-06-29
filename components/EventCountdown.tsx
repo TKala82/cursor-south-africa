@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { COUNTDOWN_WINDOW_DAYS, DAY_MS, eventStartMs, getNextEvent } from '@/content/events';
+import { COUNTDOWN_WINDOW_DAYS, DAY_MS, eventStartMs, getEventCity, getEventDisplayTitle, getNextEvent, formatEventDate } from '@/content/events';
 import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
 
@@ -25,7 +25,7 @@ function getParts(diffMs: number) {
 }
 
 const EventCountdown: React.FC = () => {
-	const { t } = useI18n();
+	const { t, locale } = useI18n();
 
 	// `null` until mounted so the server render and first client render match (no hydration mismatch).
 	const [now, setNow] = useState<number | null>(null);
@@ -53,7 +53,7 @@ const EventCountdown: React.FC = () => {
 
 	const isToday = diff <= 0;
 	const { days, hours, minutes, seconds } = getParts(diff);
-	const city = next.location.split(',')[0].trim();
+	const city = getEventCity(next);
 	const registerUrl = next.lumaUrl ?? siteConfig.lumaUrl;
 
 	const segments = [
@@ -76,12 +76,12 @@ const EventCountdown: React.FC = () => {
 						className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-cursor-surface p-6 shadow-[0_24px_80px_rgba(0,0,0,0.55)] md:p-8"
 					>
 						<div className="relative flex flex-col items-center text-center">
-							<h2 className="text-2xl font-bold text-white md:text-3xl">{next.title}</h2>
+							<h2 className="text-2xl font-bold text-white md:text-3xl">{getEventDisplayTitle(next)}</h2>
 							<div className="mt-2 flex items-center gap-2 text-sm text-white/55">
 								<span aria-hidden className="text-[#f54e00]">
 									●
 								</span>
-								<span>{next.displayDate}</span>
+								<span>{formatEventDate(next.date, locale, 'long')}</span>
 								<span className="text-white/30">&middot;</span>
 								<span>{city}</span>
 							</div>

@@ -27,7 +27,7 @@ const SouthAfricaScrollTitle: React.FC<{ children?: React.ReactNode }> = ({ chil
 	return (
 		<section
 			aria-label={`Cursor ${siteConfig.communityName}`}
-			className="relative flex min-h-[calc(100svh-56px)] flex-col items-center justify-start border-t border-cursor-border bg-black px-6 py-16 md:px-12 lg:px-16"
+			className="relative flex min-h-[calc(50svh+150px)] flex-col items-center justify-start border-t border-cursor-border bg-black px-6 py-16 md:px-12 lg:px-16"
 		>
 			<p className="sr-only">
 				Cursor {siteConfig.communityName} — the Cursor community for South African builders
@@ -38,7 +38,7 @@ const SouthAfricaScrollTitle: React.FC<{ children?: React.ReactNode }> = ({ chil
 				variants={containerVariants}
 				initial="hidden"
 				whileInView="visible"
-				viewport={{ once: true, amount: 0.3 }}
+				viewport={{ once: false, amount: 0.3 }}
 				className="flex w-full max-w-[80rem] select-none flex-wrap items-center justify-center gap-x-[0.28em] gap-y-1 text-center font-sans text-[clamp(3rem,14vw,10rem)] font-bold uppercase leading-[0.9] tracking-[-0.02em] text-white md:gap-y-2"
 			>
 				{WORDS.map((word, wordIndex) => (

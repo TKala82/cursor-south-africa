@@ -16,7 +16,7 @@ import React from 'react';
 export const statementBanner = {
 	// Keep it short. Three words ties the whole "permission to start" spine
 	// into one line. Edit here — copy is content, not markup.
-	text: 'CURSOR IS THE ANSWER.',
+	text: 'CURSOR IS THE ANSWER',
 } as const;
 
 const StatementBanner: React.FC = () => {
@@ -35,7 +35,9 @@ const StatementBanner: React.FC = () => {
 				// Generous vertical breathing room is what makes it read as an
 				// interruption rather than just another section.
 				paddingBlock: 'clamp(5rem, 14vw, 10rem)',
-				paddingInline: 'clamp(1.25rem, 6vw, 6rem)',
+				// No horizontal padding: the justified headline runs edge to edge,
+				// so the first/last glyphs sit against the page edges.
+				paddingInline: 0,
 			}}
 		>
 			<h2
@@ -44,12 +46,22 @@ const StatementBanner: React.FC = () => {
 					color: '#FF5C0A', // bright orange on black
 					fontWeight: 800,
 					lineHeight: 1.02,
-					letterSpacing: '-0.02em',
+					// Keep letters un-tightened so the inter-character justify below
+					// has slack to track them apart rather than fighting a negative base.
+					letterSpacing: '0',
 					// Fluid type: fills the banner on desktop, stays readable on a phone.
 					fontSize: 'clamp(2.5rem, 9vw, 7rem)',
 					textTransform: 'uppercase',
-					textWrap: 'balance',
-					maxWidth: '20ch',
+					// Justify the single line edge to edge. With inter-character below,
+					// the fill-space is spread between EVERY glyph, so the letters track
+					// out to the full width and the word gaps shrink (but stay readable),
+					// while "C" still hits the far left and the last "R" the far right.
+					textAlign: 'justify',
+					textAlignLast: 'justify',
+					// The key change: distribute slack between characters, not just at
+					// word spaces. Supported in Chromium/Firefox; Safari ignores it and
+					// falls back to the previous word-justified look.
+					textJustify: 'inter-character',
 				}}
 			>
 				{statementBanner.text}

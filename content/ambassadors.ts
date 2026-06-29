@@ -6,7 +6,7 @@ import { Ambassador } from '@/lib/types';
 export const ambassadors: Ambassador[] = [
 	{
 		name: 'Shabs',
-		role: 'Cursor Ambassador, Johannesburg',
+		role: 'Cursor Ambassador',
 		photo: '/images/ambassadors/shabs.png',
 		links: {
 			x: 'https://x.com/shabskalambaie',
@@ -15,7 +15,7 @@ export const ambassadors: Ambassador[] = [
 	},
 	{
 		name: 'Jonas',
-		role: 'Community Co-organizer, Cape Town',
+		role: 'Cursor Ambassador',
 		photo: '/images/ambassadors/jonas.png',
 		links: {
 			linkedin: 'https://www.linkedin.com/in/jonas-kgomo/',

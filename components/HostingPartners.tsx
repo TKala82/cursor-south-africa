@@ -63,7 +63,7 @@ const HostingPartners: React.FC = () => {
 				) : (
 					<a
 						href={hostingSection.cta.href}
-						className="inline-flex items-center rounded-md border border-cursor-border px-4 py-2 text-sm font-medium text-cursor-text-secondary hover:border-cursor-border-emphasis hover:text-cursor-text transition-colors"
+						className="inline-flex items-center rounded-md border border-cursor-border px-4 py-2 text-sm font-medium text-cursor-text-secondary hover:border-[#f54e00]/40 hover:text-cursor-text hover:shadow-[0_0_15px_rgba(245,78,0,0.12)] transition-all duration-300"
 					>
 						{hostingSection.cta.label}
 					</a>

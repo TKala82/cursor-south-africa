@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { introContent } from '@/content/intro';
 
 const IntroSection: React.FC = () => {
-	const { headline, subheadline } = introContent;
+	const { headline, body, closing, audienceHeading, audienceList } = introContent;
 
 	return (
 		<section
@@ -27,8 +27,19 @@ const IntroSection: React.FC = () => {
 				</h1>
 
 				<p className="mt-6 max-w-3xl text-lg leading-relaxed text-cursor-text-secondary">
-					{subheadline}
+					{body}
 				</p>
+
+				<p className="mt-4 max-w-3xl text-lg leading-relaxed text-cursor-text-secondary">
+					{closing}
+				</p>
+
+				<h2 className="sr-only">{audienceHeading}</h2>
+				<ul className="sr-only">
+					{audienceList.map((item) => (
+						<li key={item}>{item}</li>
+					))}
+				</ul>
 			</motion.div>
 		</section>
 	);

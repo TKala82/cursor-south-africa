@@ -104,7 +104,7 @@ export default function Navbar() {
               )
             })}
             <a
-              href={siteConfig.cursorCommunityUrl}
+              href={`${siteConfig.lumaUrl}?period=past`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium px-3.5 py-1.5 rounded-md bg-cursor-text text-cursor-bg hover:bg-cursor-text-secondary transition-colors"
@@ -143,7 +143,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={siteConfig.cursorCommunityUrl}
+              href={`${siteConfig.lumaUrl}?period=past`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMobile}

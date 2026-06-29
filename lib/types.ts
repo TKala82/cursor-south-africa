@@ -3,6 +3,8 @@ export type LocaleCode = string;
 export interface CursorEvent {
 	id: string;
 	title: string;
+	// Optional shorter title for featured upcoming cards and the hero countdown.
+	upcomingTitle?: string;
 	titleLocal?: string;
 	date: string;
 	displayDate: string;
@@ -57,7 +59,10 @@ export interface Audience {
 
 export interface IntroContent {
 	headline: string;
-	subheadline: string;
+	body: string;
+	closing: string;
+	audienceHeading: string;
+	audienceList: string[];
 }
 
 export interface HeaderPhoto {

@@ -22,8 +22,45 @@ import { upcomingEvents } from '@/content/events';
 function buildHomeJsonLd() {
 	const org = {
 		'@type': 'Organization',
+		'@id': `${siteConfig.siteUrl}#org`,
 		name: `Cursor ${siteConfig.communityName}`,
 		url: siteConfig.cursorCommunityUrl,
+		description:
+			'A Johannesburg-based community for builders using Cursor — corporate professionals going independent, founders, developers, and first-time coders — meeting in person to build software in real time.',
+		location: {
+			'@type': 'Place',
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: siteConfig.city,
+				addressCountry: 'ZA',
+			},
+		},
+		knowsAbout: ['Cursor IDE', 'AI-assisted software development', 'Vibe coding'],
+	};
+
+	const webPage = {
+		'@type': 'WebPage',
+		'@id': `${siteConfig.siteUrl}#page`,
+		name: 'Cursor South Africa Community Hub',
+		about: { '@id': `${siteConfig.siteUrl}#org` },
+		audience: {
+			'@type': 'Audience',
+			audienceType: [
+				'Vibe coders',
+				'Non-technical founders',
+				'Indie hackers and solopreneurs',
+				'Corporate professionals going independent',
+				'AI-assisted software developers',
+			],
+		},
+		keywords: [
+			'vibe coding Johannesburg',
+			'learn to build apps with AI South Africa',
+			'Cursor IDE community South Africa',
+			'ship an MVP without a developer',
+			'startup builder events Joburg',
+			'AI-assisted coding meetup South Africa',
+		],
 	};
 
 	const eventItems = upcomingEvents.map((event) => ({
@@ -34,15 +71,58 @@ function buildHomeJsonLd() {
 			'@type': 'Place',
 			name: event.location,
 		},
-		organizer: org,
+		organizer: { '@id': `${siteConfig.siteUrl}#org` },
 		...(event.lumaUrl ? { url: event.lumaUrl } : {}),
 		eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
 		eventStatus: 'https://schema.org/EventScheduled',
 	}));
 
+	const eventSeriesItems = [
+		{
+			'@type': 'EventSeries',
+			'@id': `${siteConfig.siteUrl}#meetups`,
+			name: 'Cursor South Africa Meetups',
+			description:
+				'Monthly in-person meetups in Johannesburg featuring demos, deep dives, and live Q&A with the Cursor team.',
+			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+			isAccessibleForFree: true,
+			organizer: { '@id': `${siteConfig.siteUrl}#org` },
+		},
+		{
+			'@type': 'EventSeries',
+			'@id': `${siteConfig.siteUrl}#cafe-cursor`,
+			name: 'Café Cursor Johannesburg',
+			description:
+				'Casual co-working days in Johannesburg where Cursor enthusiasts build together in a café setting — no agenda, no pressure.',
+			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+			isAccessibleForFree: true,
+			organizer: { '@id': `${siteConfig.siteUrl}#org` },
+		},
+		{
+			'@type': 'EventSeries',
+			'@id': `${siteConfig.siteUrl}#hackathons`,
+			name: 'Cursor South Africa Hackathons',
+			description:
+				'Focused sprints in Johannesburg to take an idea from nothing to a working prototype in a single session.',
+			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+			isAccessibleForFree: true,
+			organizer: { '@id': `${siteConfig.siteUrl}#org` },
+		},
+		{
+			'@type': 'EventSeries',
+			'@id': `${siteConfig.siteUrl}#workshops`,
+			name: 'Cursor South Africa Workshops',
+			description:
+				'Hands-on build-along sessions in Johannesburg (and online) where participants learn Cursor by shipping real code.',
+			eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+			isAccessibleForFree: true,
+			organizer: { '@id': `${siteConfig.siteUrl}#org` },
+		},
+	];
+
 	return {
 		'@context': 'https://schema.org',
-		'@graph': [org, ...eventItems],
+		'@graph': [org, webPage, ...eventItems, ...eventSeriesItems],
 	};
 }
 

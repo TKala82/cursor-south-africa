@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
-import { upcomingEvents, getNextEvent, eventStartMs } from '@/content/events';
+import { upcomingEvents, getNextEvent, eventStartMs, getEventCity, getEventDisplayTitle, formatEventDate } from '@/content/events';
 import { useI18n } from '@/lib/i18n';
 
 const UpcomingEvents: React.FC = () => {
@@ -28,15 +28,6 @@ const UpcomingEvents: React.FC = () => {
 	}
 
 	const rest = sorted.filter((event) => event.id !== featured.id);
-
-	const formatDate = (date: string, style: 'short' | 'long' = 'short') =>
-		new Date(`${date}T00:00:00`).toLocaleDateString(locale === 'en' ? 'en-US' : locale, {
-			year: 'numeric',
-			month: style === 'long' ? 'long' : 'short',
-			day: 'numeric',
-		});
-
-	const city = featured.location.split(',')[0].trim();
 
 	return (
 		<motion.section
@@ -69,11 +60,13 @@ const UpcomingEvents: React.FC = () => {
 						<span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f54e00] opacity-75" />
 						<span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#f54e00]" />
 					</span>
-					<span>{formatDate(featured.date, 'long')}</span>
+					<span>{formatEventDate(featured.date, locale, 'long')}</span>
 					<span className="text-cursor-text-faint">&middot;</span>
-					<span>{city}</span>
+					<span>{getEventCity(featured)}</span>
 				</div>
-				<h3 className="text-2xl font-bold text-cursor-text mb-3">{featured.title}</h3>
+				<h3 className="text-2xl font-bold text-cursor-text mb-3">
+					{getEventDisplayTitle(featured)}
+				</h3>
 				{featured.lumaUrl ? (
 					<a
 						href={featured.lumaUrl}
@@ -91,8 +84,8 @@ const UpcomingEvents: React.FC = () => {
 			{rest.length > 0 && (
 				<div className="divide-y divide-cursor-border">
 					{rest.map((event, index) => {
-						const shortDate = formatDate(event.date);
-						const eventCity = event.location.split(',')[0].trim();
+						const shortDate = formatEventDate(event.date, locale);
+						const eventCity = getEventCity(event);
 
 						return (
 							<motion.div
@@ -108,7 +101,9 @@ const UpcomingEvents: React.FC = () => {
 										{shortDate}
 									</span>
 									<div className="flex-1 min-w-0">
-										<h3 className="text-cursor-text font-medium text-sm">{event.title}</h3>
+										<h3 className="text-cursor-text font-medium text-sm">
+											{getEventDisplayTitle(event)}
+										</h3>
 										<div className="flex items-center gap-2 mt-1">
 											<span className="text-xs text-cursor-text-muted">{eventCity}</span>
 											{event.lumaUrl ? (

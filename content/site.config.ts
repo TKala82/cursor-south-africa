@@ -5,6 +5,7 @@ export const siteConfig = {
 	communityNameLocal: 'Mzansi',
 	city: 'Johannesburg',
 	country: 'South Africa',
+	siteUrl: 'https://cursorsouthafrica.co.za',
 	lumaUrl: 'https://luma.com/cursor-johannesburg-africa',
 	cursorCommunityUrl: 'https://cursor.com/community',
 	defaultLocale: 'en',

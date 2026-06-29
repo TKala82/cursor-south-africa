@@ -37,23 +37,23 @@ export const formats: EventFormat[] = [
 	{
 		id: 'meetups',
 		title: 'Meetups',
-		body: 'Lightning demos, deep dives, and panel talks — plus live Q&A with the Cursor team. Around two and a half hours of seeing what\u2019s possible and asking the questions you actually have.',
+		body: 'Lightning demos, deep dives, and panel talks, plus live Q&A with the Cursor team. Cursor South Africa runs these monthly across South Africa, around two and a half hours of seeing what\u2019s possible and asking the questions you actually have.',
 	},
 	{
 		id: 'cafe-cursor',
 		title: 'Café Cursor',
-		body: 'We take over a Joburg café for the day. Grab a coffee, maybe a croissant, open your laptop, and build alongside other Cursor enthusiasts. No agenda, no pressure — just a casual co-working space for people who\u2019d rather build than talk about building.',
+		body: 'Cursor South Africa takes over a café for the day. Come grab a coffee, maybe a croissant, open your laptop, and build alongside other Cursor enthusiasts. No agenda, no pressure, just a casual co-working space for people to open up and build next to others doing the same thing.',
 		featured: true,
 	},
 	{
 		id: 'hackathons',
 		title: 'Hackathons',
-		body: 'A focused sprint to take an idea from nothing to something real. Bring a problem, leave with a working prototype.',
+		body: 'A focused sprint, run by Cursor South Africa in Johannesburg, to take an idea from nothing to something real. Bring a problem, leave with a working prototype.',
 	},
 	{
 		id: 'workshops',
 		title: 'Workshops',
-		body: 'Hands-on, build-along sessions where you learn Cursor by actually using it — in person, or online when you just need to get unstuck. Come in curious, leave knowing how to ship.',
+		body: 'Hands-on, build-along sessions where you learn Cursor by actually using it, run by Cursor South Africa, in person in Johannesburg or online when you just need to get unstuck. Come in curious, leave knowing how to ship.',
 	},
 ];
 

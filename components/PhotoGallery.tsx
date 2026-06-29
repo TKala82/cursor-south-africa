@@ -46,7 +46,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, embedded = false })
 						initial={{ opacity: 0, scale: 0.98 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.25) }}
-						className="relative aspect-square overflow-hidden rounded-lg border border-cursor-border bg-cursor-bg-dark text-left"
+						className="relative aspect-square w-full overflow-hidden rounded-lg border border-cursor-border bg-cursor-bg-dark text-left"
 						onClick={() => {
 							setCurrentIndex(index);
 							setIsFullscreen(true);
@@ -86,7 +86,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, embedded = false })
 								<X className="w-5 h-5" />
 							</button>
 
-							<div className="relative w-full h-[80vh] mb-4">
+							<div className="relative w-full h-[80vh] mb-4 bg-black/40 rounded-lg overflow-hidden">
 								<AnimatePresence mode="wait">
 									<motion.div
 										key={currentIndex}
@@ -96,7 +96,14 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, embedded = false })
 										transition={{ duration: 0.2 }}
 										className="relative w-full h-full"
 									>
-										<Image src={currentPhoto.src} alt={currentPhoto.alt} fill className="object-contain" sizes="90vw" />
+										<Image
+											src={currentPhoto.src}
+											alt={currentPhoto.alt}
+											fill
+											className="object-contain"
+											sizes="90vw"
+											priority
+										/>
 									</motion.div>
 								</AnimatePresence>
 							</div>
@@ -105,6 +112,7 @@ const PhotoGallery: React.FC<PhotoGalleryProps> = ({ photos, embedded = false })
 								<p className="text-cursor-text font-medium">
 									{t('recap.photoLabel', { index: String(currentIndex + 1), total: String(photos.length) })}
 								</p>
+								<p className="text-cursor-text-muted text-sm mt-1">{currentPhoto.alt}</p>
 							</div>
 
 							{photos.length > 1 ? (

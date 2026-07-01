@@ -27,7 +27,7 @@ const SouthAfricaScrollTitle: React.FC<{ children?: React.ReactNode }> = ({ chil
 	return (
 		<section
 			aria-label={`Cursor ${siteConfig.communityName}`}
-			className="relative flex min-h-[calc(50svh+150px)] flex-col items-center justify-start border-t border-cursor-border bg-black px-6 py-16 md:px-12 lg:px-16"
+			className="relative grid min-h-[calc(50svh+150px)] place-items-center border-t border-cursor-border bg-black px-6 py-16 md:px-12 lg:px-16"
 		>
 			<p className="sr-only">
 				Cursor {siteConfig.communityName} — the Cursor community for South African builders
@@ -56,7 +56,11 @@ const SouthAfricaScrollTitle: React.FC<{ children?: React.ReactNode }> = ({ chil
 				))}
 			</motion.p>
 
-			{children}
+			{children ? (
+				<div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 translate-y-1/2">
+					<div className="pointer-events-auto">{children}</div>
+				</div>
+			) : null}
 		</section>
 	);
 };

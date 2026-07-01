@@ -34,8 +34,7 @@ export const pastEvents = events.filter((event) => event.status === 'past');
 export const DAY_MS = 86_400_000;
 
 // How close (in days) the next event must be before the hero countdown appears.
-// TEMP (preview): widened so the countdown shows now (JHB is ~32 days out). Revert to 10 before shipping.
-export const COUNTDOWN_WINDOW_DAYS = 40;
+export const COUNTDOWN_WINDOW_DAYS = 14;
 
 // Local midnight of the event day, matching how dates are formatted elsewhere on the site.
 export function eventStartMs(event: CursorEvent): number {

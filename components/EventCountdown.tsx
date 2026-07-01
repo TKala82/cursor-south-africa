@@ -64,7 +64,7 @@ const EventCountdown: React.FC = () => {
 	];
 
 	return (
-		<div className="absolute inset-x-0 bottom-0 z-20 translate-y-1/2 px-6">
+		<div className="px-6">
 			<div className="mx-auto w-full max-w-xl">
 				<AnimatePresence mode="wait">
 					<motion.div

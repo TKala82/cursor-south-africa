@@ -6,8 +6,7 @@ import { useI18n } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
 
 const QUICK_LINKS = [
-	{ href: 'https://cursor.com/learn', labelKey: 'footer.learn', external: true },
-	{ href: 'https://cursor.com/docs', labelKey: 'footer.docs', external: true },
+	{ href: `mailto:${siteConfig.contactEmail}`, labelKey: 'footer.contact', external: false },
 	{ href: siteConfig.lumaUrl, labelKey: 'footer.allEventsOnLuma', external: true },
 	{ href: siteConfig.cursorCommunityUrl, labelKey: 'footer.community', external: true },
 	{ href: 'https://x.com/cursor_ai', labelKey: 'footer.followUsOnX', external: true },

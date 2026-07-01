@@ -6,6 +6,7 @@ export const siteConfig = {
 	city: 'Johannesburg',
 	country: 'South Africa',
 	siteUrl: 'https://cursorsouthafrica.co.za',
+	contactEmail: 'contact@cursorsouthafrica.com',
 	lumaUrl: 'https://luma.com/cursor-johannesburg-africa',
 	cursorCommunityUrl: 'https://cursor.com/community',
 	defaultLocale: 'en',

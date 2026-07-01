@@ -10,6 +10,7 @@ export const events: CursorEvent[] = [
 		date: '2026-07-23',
 		displayDate: 'July 23, 2026',
 		location: 'Johannesburg, South Africa',
+		venue: 'To be confirmed',
 		lumaUrl: LUMA_URL,
 		status: 'upcoming',
 	},

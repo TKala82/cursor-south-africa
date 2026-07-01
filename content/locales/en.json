@@ -26,8 +26,7 @@
 		"headingLine2": "build",
 		"headingLine3": "together",
 		"quickLinks": "Quick Links",
-		"learn": "Learn",
-		"docs": "Docs",
+		"contact": "Contact Us",
 		"allEventsOnLuma": "All Events On Luma",
 		"community": "Cursor Community",
 		"madeWith": "Made with Cursor by ambassadors worldwide",
@@ -86,5 +85,25 @@
 		"minutes": "Minutes",
 		"seconds": "Seconds",
 		"today": "Happening today"
+	},
+	"hostModal": {
+		"title": "Suggest a Venue",
+		"intro": "Know a café or co-working space that would make a great Café Cursor? Share the details and we'll take it from there.",
+		"nameLabel": "Your name",
+		"namePlaceholder": "Jane Doe",
+		"emailLabel": "Your email",
+		"emailPlaceholder": "you@example.com",
+		"venueNameLabel": "Venue name",
+		"venueNamePlaceholder": "The Coffee Collective",
+		"venueLocationLabel": "Venue location / address",
+		"venueLocationPlaceholder": "Braamfontein, Johannesburg",
+		"venueLinkLabel": "Venue website or gallery link",
+		"venueLinkPlaceholder": "https://",
+		"messageLabel": "Anything else?",
+		"messagePlaceholder": "Opening hours, capacity, why it's a great fit…",
+		"submit": "Send via Email",
+		"cancel": "Cancel",
+		"note": "This opens your email app with the details addressed to us.",
+		"close": "Close"
 	}
 }

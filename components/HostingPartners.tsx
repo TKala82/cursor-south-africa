@@ -1,10 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { hostingTags, hostingSection } from '@/content/hosting';
+import HostVenueModal from '@/components/HostVenueModal';
 
 const HostingPartners: React.FC = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	return (
 		<motion.section
 			aria-labelledby="hosting-heading"
@@ -51,24 +54,16 @@ const HostingPartners: React.FC = () => {
 			</motion.div>
 
 			<div className="mt-6">
-				{hostingSection.cta.href.startsWith('http') ? (
-					<a
-						href={hostingSection.cta.href}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="inline-flex items-center rounded-md border border-cursor-border px-4 py-2 text-sm font-medium text-cursor-text-secondary hover:border-cursor-border-emphasis hover:text-cursor-text transition-colors"
-					>
-						{hostingSection.cta.label}
-					</a>
-				) : (
-					<a
-						href={hostingSection.cta.href}
-						className="inline-flex items-center rounded-md border border-cursor-border px-4 py-2 text-sm font-medium text-cursor-text-secondary hover:border-[#f54e00]/40 hover:text-cursor-text hover:shadow-[0_0_15px_rgba(245,78,0,0.12)] transition-all duration-300"
-					>
-						{hostingSection.cta.label}
-					</a>
-				)}
+				<button
+					type="button"
+					onClick={() => setIsModalOpen(true)}
+					className="inline-flex items-center rounded-md border border-cursor-border px-4 py-2 text-sm font-medium text-cursor-text-secondary hover:border-[#f54e00]/40 hover:text-cursor-text hover:shadow-[0_0_15px_rgba(245,78,0,0.12)] transition-all duration-300"
+				>
+					{hostingSection.cta.label}
+				</button>
 			</div>
+
+			<HostVenueModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
 		</motion.section>
 	);
 };

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, MapPin } from 'lucide-react';
 import { upcomingEvents, getNextEvent, eventStartMs, getEventCity, getEventDisplayTitle, formatEventDate } from '@/content/events';
 import { useI18n } from '@/lib/i18n';
 
@@ -67,6 +67,24 @@ const UpcomingEvents: React.FC = () => {
 				<h3 className="text-2xl font-bold text-cursor-text mb-3">
 					{getEventDisplayTitle(featured)}
 				</h3>
+				<div className="flex items-center gap-1.5 text-sm text-cursor-text-muted mb-4">
+					{featured.mapsUrl ? (
+						<a
+							href={featured.mapsUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="flex items-center gap-1.5 hover:text-cursor-text transition-colors"
+						>
+							<MapPin className="w-4 h-4 shrink-0" />
+							<span>{featured.venue ?? featured.location}</span>
+						</a>
+					) : (
+						<>
+							<MapPin className="w-4 h-4 shrink-0" />
+							<span>{featured.venue ?? featured.location}</span>
+						</>
+					)}
+				</div>
 				{featured.lumaUrl ? (
 					<a
 						href={featured.lumaUrl}
@@ -86,6 +104,7 @@ const UpcomingEvents: React.FC = () => {
 					{rest.map((event, index) => {
 						const shortDate = formatEventDate(event.date, locale);
 						const eventCity = getEventCity(event);
+						const venueLabel = event.venue ?? event.location;
 
 						return (
 							<motion.div
@@ -104,6 +123,24 @@ const UpcomingEvents: React.FC = () => {
 										<h3 className="text-cursor-text font-medium text-sm">
 											{getEventDisplayTitle(event)}
 										</h3>
+										<div className="flex items-center gap-1.5 mt-1 text-xs text-cursor-text-muted">
+											{event.mapsUrl ? (
+												<a
+													href={event.mapsUrl}
+													target="_blank"
+													rel="noopener noreferrer"
+													className="flex items-center gap-1 hover:text-cursor-text transition-colors"
+												>
+													<MapPin className="w-3.5 h-3.5 shrink-0" />
+													<span>{venueLabel}</span>
+												</a>
+											) : (
+												<>
+													<MapPin className="w-3.5 h-3.5 shrink-0" />
+													<span>{venueLabel}</span>
+												</>
+											)}
+										</div>
 										<div className="flex items-center gap-2 mt-1">
 											<span className="text-xs text-cursor-text-muted">{eventCity}</span>
 											{event.lumaUrl ? (

@@ -19,6 +19,9 @@ export async function generateMetadata({ params }: RecapPageProps): Promise<Meta
 	return {
 		title: recap.title,
 		description,
+		alternates: {
+			canonical: `/recaps/${slug}`,
+		},
 		openGraph: {
 			title: recap.title,
 			description,

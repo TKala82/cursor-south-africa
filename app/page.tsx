@@ -24,7 +24,9 @@ function buildHomeJsonLd() {
 		'@type': 'Organization',
 		'@id': `${siteConfig.siteUrl}#org`,
 		name: `Cursor ${siteConfig.communityName}`,
-		url: siteConfig.cursorCommunityUrl,
+		url: siteConfig.siteUrl,
+		email: siteConfig.contactEmail,
+		sameAs: [siteConfig.lumaUrl, siteConfig.cursorCommunityUrl, 'https://x.com/cursor_ai'],
 		description:
 			'A Johannesburg-based community for builders using Cursor — corporate professionals going independent, founders, developers, and first-time coders — meeting in person to build software in real time.',
 		location: {

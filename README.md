@@ -1,6 +1,6 @@
 # Cursor South Africa
 
-![Cursor South Africa Banner](public/images/readme-banner.png)
+![Cursor South Africa Banner](public/images/og-banner.png)
 
 The official website for **Cursor South Africa** — the local community for builders using [Cursor](https://cursor.com) across Mzansi. We run Cafe Cursor meetups, workshops, and community events in Johannesburg, Cape Town, and beyond.
 

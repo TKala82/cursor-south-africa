@@ -5,13 +5,13 @@ import { I18nProvider } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
 import './globals.css';
 
-// TODO: Set NEXT_PUBLIC_SITE_URL (e.g. in Vercel) to your production domain so
-// canonical URLs and social preview images resolve correctly.
+// NEXT_PUBLIC_SITE_URL (set in Vercel) wins; otherwise fall back to the
+// canonical domain in site.config so canonical/OG URLs are always correct.
 const SITE_URL =
 	process.env.NEXT_PUBLIC_SITE_URL ||
 	(process.env.VERCEL_PROJECT_PRODUCTION_URL
 		? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-		: 'https://example.com');
+		: siteConfig.siteUrl);
 
 const SITE_NAME = `Cursor ${siteConfig.communityName}`;
 const SITE_DESCRIPTION =
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 		type: 'website',
 		images: [
 			{
-				url: '/images/readme-banner.png',
+				url: '/images/og-banner.png',
 				width: 1200,
 				height: 630,
 				alt: SITE_NAME,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 		card: 'summary_large_image',
 		title: SITE_NAME,
 		description: SITE_DESCRIPTION,
-		images: ['/images/readme-banner.png'],
+		images: ['/images/og-banner.png'],
 	},
 };
 

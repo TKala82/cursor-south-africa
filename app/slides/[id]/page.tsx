@@ -1,7 +1,13 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import SlideLayout from '@/modules/slides/components/SlideLayout';
 import SlideContent from '@/modules/slides/components/SlideContent';
 import { exampleDeck, totalExampleSlides } from '@/modules/slides/content/example-deck';
+
+// Internal presentation decks should not compete with the homepage in search.
+export const metadata: Metadata = {
+	robots: { index: false },
+};
 
 interface SlidePageProps {
 	params: Promise<{ id: string }>;

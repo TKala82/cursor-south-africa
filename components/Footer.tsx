@@ -6,7 +6,6 @@ import { useI18n } from '@/lib/i18n';
 import { siteConfig } from '@/content/site.config';
 
 const QUICK_LINKS = [
-	{ href: `mailto:${siteConfig.contactEmail}`, labelKey: 'footer.contact', external: false },
 	{ href: siteConfig.lumaUrl, labelKey: 'footer.allEventsOnLuma', external: true },
 	{ href: siteConfig.cursorCommunityUrl, labelKey: 'footer.community', external: true },
 	{ href: 'https://x.com/cursor_ai', labelKey: 'footer.followUsOnX', external: true },
@@ -60,10 +59,14 @@ const Footer: React.FC = () => {
 					</div>
 				</div>
 
-				<div className="mt-16 border-t border-white/[0.08] pt-6 md:mt-20">
-					<p className="text-right text-xs normal-case tracking-normal text-white/35">
-						{t('footer.copyright')}
-					</p>
+				<div className="mt-16 flex flex-col gap-3 border-t border-white/[0.08] pt-6 sm:flex-row sm:items-center sm:justify-between md:mt-20">
+					<p className="text-xs normal-case tracking-normal text-white/35">{t('footer.copyright')}</p>
+					<a
+						href={`mailto:${siteConfig.contactEmail}`}
+						className="text-xs normal-case tracking-normal text-white/35 transition-colors hover:text-white/55"
+					>
+						{siteConfig.contactEmail}
+					</a>
 				</div>
 			</div>
 		</motion.footer>

@@ -43,7 +43,6 @@ export const hostingSection = {
 		body: 'Same business. Just busier. We bring the people, the energy, the invites — you bring the coffee.',
 	},
 	// Keep this secondary to the visitor/event CTA.
-	// Opens the venue-suggestion modal (see components/HostVenueModal.tsx).
 	cta: {
 		label: 'Host Café Cursor',
 	},

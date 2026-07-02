@@ -119,6 +119,9 @@ export interface RecapData {
 	slug: string;
 	title: string;
 	date: string;
+	// ISO 8601 start date (e.g. '2026-06-05') used for Event structured data;
+	// `date` above is a human-readable display string and is not machine-parseable.
+	startDate?: string;
 	attendees?: number;
 	summary: string[];
 	host?: { name: string; logo: string; url?: string };

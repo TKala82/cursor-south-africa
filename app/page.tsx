@@ -17,7 +17,7 @@ import SectionDivider from '@/components/SectionDivider';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { siteConfig } from '@/content/site.config';
-import { upcomingEvents } from '@/content/events';
+import { upcomingEvents, getEventCity } from '@/content/events';
 
 function buildHomeJsonLd() {
 	const org = {
@@ -65,19 +65,49 @@ function buildHomeJsonLd() {
 		],
 	};
 
-	const eventItems = upcomingEvents.map((event) => ({
-		'@type': 'Event',
-		name: event.title,
-		startDate: event.date,
-		location: {
-			'@type': 'Place',
-			name: event.location,
-		},
-		organizer: { '@id': `${siteConfig.siteUrl}#org` },
-		...(event.lumaUrl ? { url: event.lumaUrl } : {}),
-		eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-		eventStatus: 'https://schema.org/EventScheduled',
-	}));
+	const eventItems = upcomingEvents.map((event) => {
+		const city = getEventCity(event);
+		const placeName =
+			event.venue && event.venue !== 'To be confirmed' ? event.venue : event.location;
+		return {
+			'@type': 'Event',
+			name: event.title,
+			description: `In-person Cursor meetup in ${city}, hosted by Cursor ${siteConfig.communityName} — live demos, deep dives, and Q&A for builders using Cursor.`,
+			startDate: event.date,
+			endDate: event.date,
+			eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+			eventStatus: 'https://schema.org/EventScheduled',
+			location: {
+				'@type': 'Place',
+				name: placeName,
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: city,
+					addressCountry: 'ZA',
+				},
+			},
+			image: [`${siteConfig.siteUrl}/images/og-banner.png`],
+			organizer: {
+				'@type': 'Organization',
+				'@id': `${siteConfig.siteUrl}#org`,
+				name: `Cursor ${siteConfig.communityName}`,
+				url: siteConfig.siteUrl,
+			},
+			performer: {
+				'@type': 'Organization',
+				name: `Cursor ${siteConfig.communityName}`,
+			},
+			isAccessibleForFree: true,
+			offers: {
+				'@type': 'Offer',
+				price: '0',
+				priceCurrency: 'ZAR',
+				availability: 'https://schema.org/InStock',
+				url: event.lumaUrl ?? siteConfig.siteUrl,
+			},
+			...(event.lumaUrl ? { url: event.lumaUrl } : {}),
+		};
+	});
 
 	const eventSeriesItems = [
 		{

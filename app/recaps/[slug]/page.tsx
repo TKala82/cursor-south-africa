@@ -35,28 +35,37 @@ function buildRecapJsonLd(slug: string) {
 	const recap = recapsBySlug[slug];
 	if (!recap) return null;
 
+	const toAbsolute = (path: string) =>
+		path.startsWith('http') ? path : `${siteConfig.siteUrl}${path}`;
+	const images = recap.photos.slice(0, 5).map((photo) => toAbsolute(photo.src));
+
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Event',
 		name: recap.title,
-		startDate: recap.date,
-		description: recap.summary[0] || '',
-		organizer: {
-			'@type': 'Organization',
-			name: `Cursor ${siteConfig.communityName}`,
-		},
-		...(recap.attendees ? { maximumAttendeeCapacity: recap.attendees } : {}),
-		...(recap.host
-			? {
-					location: {
-						'@type': 'Place',
-						name: recap.host.name,
-					},
-				}
-			: {}),
-		...(recap.photos[0]?.src ? { image: recap.photos[0].src } : {}),
+		description: recap.summary[0] || `Recap of ${recap.title}`,
+		...(recap.startDate ? { startDate: recap.startDate, endDate: recap.startDate } : {}),
 		eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
 		eventStatus: 'https://schema.org/EventScheduled',
+		isAccessibleForFree: true,
+		location: {
+			'@type': 'Place',
+			// The only recap so far is Johannesburg; revisit if recaps span other cities.
+			name: recap.host?.name ?? siteConfig.city,
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: siteConfig.city,
+				addressCountry: 'ZA',
+			},
+		},
+		...(images.length ? { image: images } : {}),
+		organizer: {
+			'@type': 'Organization',
+			'@id': `${siteConfig.siteUrl}#org`,
+			name: `Cursor ${siteConfig.communityName}`,
+			url: siteConfig.siteUrl,
+		},
+		...(recap.attendees ? { maximumAttendeeCapacity: recap.attendees } : {}),
 	};
 }
 

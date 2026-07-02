@@ -5,6 +5,7 @@ export const cafeCursorJohannesburgRecap: RecapData = {
 	slug: 'cafe-cursor-johannesburg',
 	title: 'Cafe Cursor Johannesburg — Recap',
 	date: 'June 5, 2026 · Mamakashaka & Friends, Braamfontein',
+	startDate: '2026-06-05',
 	summary: [
 		'Our first Cafe Cursor in Johannesburg brought builders together at Mamakashaka & Friends in Braamfontein for an afternoon of hands-on coding with Cursor.',
 		'A look back at the people, the projects, and the energy from the day.',

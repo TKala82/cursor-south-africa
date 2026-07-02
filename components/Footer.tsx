@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 			whileInView={{ opacity: 1 }}
 			viewport={{ once: true, margin: '-50px' }}
 			transition={{ duration: 0.5 }}
-			className="relative z-20 -mt-[22vw] w-full bg-gradient-to-b from-transparent from-20% via-footer-blend-mid via-70% to-footer-blend-bottom pt-[11vw] md:-mt-[20vw] md:pt-[7rem]"
+			className="relative z-20 -mt-[22vw] w-full bg-gradient-to-b from-transparent from-20% via-footer-blend-mid via-70% to-footer-blend-bottom pt-[22vw] md:-mt-[20vw] md:pt-[14rem]"
 		>
 			<div className="relative mx-auto max-w-[604px] px-6 pb-10 md:px-0 md:pb-12">
 				<div className="grid grid-cols-1 gap-12 md:grid-cols-[20rem_8rem] md:gap-20">
